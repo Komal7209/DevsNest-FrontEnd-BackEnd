@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Calculator</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <input id="firstNum" name="first" placeholder="Enter First Number" /><br />
+
+    <input
+      id="secondNum"
+      name="second"
+      placeholder="Enter Second Number"
+    /><br />
+
+    <button value="+" onclick="calculate(value)">Add <strong>+</strong></button>
+    &ensp;
+    <button value="-" onclick="calculate(value)">
+      Subs <strong>-</strong>
+    </button>
+    &ensp;
+    <button value="X" onclick="calculate(value)">
+      Multiply <strong>x</strong>
+    </button>
+    &ensp;
+    <button value="/" onclick="calculate(value)">
+      Divide <strong>/</strong></button
+    ><br />
+    <br />
+    <br />
+
+    <strong id="result">Output will be displayed here.</strong>
+  </body>
+  <script type="text/javascript" src="style.js"></script>
+</html>

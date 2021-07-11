@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px red, 0 0 0 43px #d3d3d3, inset 0 0 0 5px #fff,
+      inset 0 0 4px 5px black;
+    position: relative;
+  }
+  
+  .line {
+    border-bottom: 3px solid #000;
+    width: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom left;
+  }
+  
+  .line1 {
+    animation: time 216000s infinite linear;
+  }
+  
+  .line2 {
+    animation: time 3600s infinite linear;
+  }
+  
+  .line3 {
+    animation: time 60s infinite linear;
+  }
+  
+  @keyframes time {
+    to {
+      transform: rotate(360deg);
+    }
+  }

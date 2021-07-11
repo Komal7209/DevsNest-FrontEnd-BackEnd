@@ -1,0 +1,23 @@
+  
+body {
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+    background-color: brown;
+  }
+  
+  input {
+    width: 200px;
+    height: 30px;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    border-radius: 50%;
+    padding: 15px 30px;
+    outline: none;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+  }
