@@ -1,0 +1,53 @@
+  body {
+    text-align: center;
+    background-color: rgb(235, 61, 177);
+  }
+  
+  .input-section {
+    margin-top: 4rem;
+    text-align: center;
+  }
+  
+  input {
+    width: 500px;
+    margin: 1.5rem;
+    padding-bottom: 0.5rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .button-section {
+    margin-top: 3rem;
+  }
+  
+  button {
+    margin: 0px 1.2rem;
+    width: 100px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: green;
+    color: #fff;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  #result {
+    margin-top: 3rem;
+    font-size: 2rem;
+  }

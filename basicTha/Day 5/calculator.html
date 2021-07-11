@@ -1,39 +1,27 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-
-    <title>Calculator</title>
+    <title>Document</title>
   </head>
   <body>
-    <h1>Calculator</h1>
-    <input id="firstNum" name="first" placeholder="Enter First Number" /><br />
+    <div class="header">
+      <h1>Simple Calculator</h1>
+    </div>
+    <div class="input-section">
+      <input id="input1" type="number" placeholder="Enter First Number: " />
+      <br />
+      <input id="input2" type="number" placeholder="Enter Second Number: " />
+    </div>
+    <div class="button-section">
+      <button class="add btn">Add +</button>
+      <button class="subtract btn">Subtract -</button>
+      <button class="multiply btn">Multiply *</button>
+      <button class="divide btn">Divide /</button>
+    </div>
+    <h2 id="result">Result:</h2>
 
-    <input
-      id="secondNum"
-      name="second"
-      placeholder="Enter Second Number"
-    /><br />
-
-    <button value="+" onclick="calculate(value)">Add <strong>+</strong></button>
-    &ensp;
-    <button value="-" onclick="calculate(value)">
-      Subs <strong>-</strong>
-    </button>
-    &ensp;
-    <button value="X" onclick="calculate(value)">
-      Multiply <strong>x</strong>
-    </button>
-    &ensp;
-    <button value="/" onclick="calculate(value)">
-      Divide <strong>/</strong></button
-    ><br />
-    <br />
-    <br />
-
-    <strong id="result">Output will be displayed here.</strong>
+    <script src="./script.js"></script>
   </body>
-  <script type="text/javascript" src="style.js"></script>
 </html>
