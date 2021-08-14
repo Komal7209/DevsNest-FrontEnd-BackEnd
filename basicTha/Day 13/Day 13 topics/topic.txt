@@ -1,0 +1,5 @@
+promise, Fetch APis,
+async/await
+browser catching, localstorage , session storage
+
+Fetch Apis return output in form of promise
