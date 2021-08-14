@@ -1,61 +1,116 @@
-const form = document.getElementById("form");
-const input = document.getElementById("input");
-const todosUL = document.getElementById("todos");
+//For date
+let dateDiv = document.querySelector(".date");
+const options = { day: "numeric", month: "short", weekday: "long" };
+const date = new Date();
+dateDiv.innerHTML = date.toLocaleDateString("en-US", options);
+//For date ends
 
-const todos = JSON.parse(localStorage.getItem("todos"));
+const UNCHECK_CLASS1 = "far";
+const UNCHECK_CLASS2 = "fa-circle";
+const CHECK_CLASS1 = "fas";
+const CHECK_CLASS2 = "fa-check-circle";
 
-if (todos) {
-  todos.forEach((todo) => addTodo(todo));
+const LINE_THROUGH_CLASS = "line-through";
+let listDiv = document.querySelector(".list");
+let taskDiv = document.querySelector(".task");
+let inputField = document.querySelector("input");
+let LIST, id;
+
+//get item from local storge
+let data = localStorage.getItem("todo");
+if (data) {
+  LIST = JSON.parse(data);
+  id = LIST.length;
+  displayList(LIST);
+} else {
+  LIST = [];
+  id = 0;
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+function displayList(arr) {
+  arr.forEach((element) => {
+    addTodoToScreen(element.name, element.id, element.done, element.trash);
+  });
+}
 
-  addTodo();
+function addTodoToScreen(task, id, done, trash) {
+  if (trash) return;
+  const class1ToApply = done ? CHECK_CLASS1 : UNCHECK_CLASS1;
+  const class2ToApply = done ? CHECK_CLASS2 : UNCHECK_CLASS2;
+  const isLineThrough = done ? LINE_THROUGH_CLASS : "";
+  const htmlToAdd = ` <li>
+                        
+                          <i class="${class1ToApply} ${class2ToApply} pointed" id="${id}" job="check-box")></i>
+                        
+                        <p class="task ${isLineThrough}">${task}</p>
+                       
+                          <i class="fas fa-trash-alt trash pointed" id="${id}" job="trash")></i>
+                    </li>`;
+  listDiv.insertAdjacentHTML("beforeend", htmlToAdd);
+}
+
+//add item on enter key press
+document.addEventListener("keyup", function (e) {
+  if (e.key == "Enter") add();
 });
 
-function addTodo(todo) {
-  let todoText = input.value;
+document.querySelector(".fa-plus-circle").addEventListener("click", add);
 
-  if (todo) {
-    todoText = todo.text;
-  }
+function add() {
+  const task = inputField.value;
+  if (task) {
+    addTodoToScreen(task, id, false, false);
 
-  if (todoText) {
-    const todoEl = document.createElement("li");
-    if (todo && todo.completed) {
-      todoEl.classList.add("completed");
-    }
-
-    todoEl.innerText = todoText;
-
-    todoEl.addEventListener("click", () => {
-      todoEl.classList.toggle("completed");
-      updatesLocalStorage();
+    LIST.push({
+      name: task,
+      id: id,
+      done: false,
+      trash: false,
     });
-
-    todoEl.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-      todoEl.remove();
-      updatesLocalStorage();
-    });
-
-    todosUL.appendChild(todoEl);
-    input.value = "";
-    updatesLocalStorage();
+    //add item to local storage
+    localStorage.setItem("todo", JSON.stringify(LIST));
+    id++;
   }
+  inputField.value = "";
 }
 
-function updatesLocalStorage() {
-  todosEl = document.querySelectorAll("li");
-  const todos = [];
+function completed(element) {
+  if (element.classList.contains(UNCHECK_CLASS1)) {
+    element.classList.remove(UNCHECK_CLASS1);
+    element.classList.remove(UNCHECK_CLASS2);
+    element.classList.add(CHECK_CLASS1);
+    element.classList.add(CHECK_CLASS2);
+  } else {
+    element.classList.remove(CHECK_CLASS1);
+    element.classList.remove(CHECK_CLASS2);
+    element.classList.add(UNCHECK_CLASS1);
+    element.classList.add(UNCHECK_CLASS2);
+  }
+  element.parentNode
+    .querySelector(".task")
+    .classList.toggle(LINE_THROUGH_CLASS);
 
-  todosEl.forEach((todoEl) => {
-    todos.push({
-      text: todoEl.innerText,
-      completed: todoEl.classList.contains("completed"),
-    });
-  });
-
-  localStorage.setItem("todos", JSON.stringify(todos));
+  LIST[element.id].done = LIST[element.id].done ? false : true; //as should toggle between completed and not completed
 }
+
+function removeElement(element) {
+  element.parentNode.parentNode.removeChild(element.parentNode);
+  LIST[element.id].trash = true;
+}
+
+listDiv.addEventListener("click", function (e) {
+  if (e.target.attributes.job.value == "check-box") {
+    completed(e.target);
+  } else if (e.target.attributes.job.value == "trash") {
+    removeElement(e.target);
+  } else {
+    //do nothing
+  }
+  //update local storage list
+  localStorage.setItem("todo", JSON.stringify(LIST));
+});
+
+document.querySelector(".clear-all").addEventListener("click", () => {
+  localStorage.clear();
+  location.reload();
+});

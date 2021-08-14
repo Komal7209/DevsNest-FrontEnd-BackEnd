@@ -1,72 +1,105 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
-
 * {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #f5f5f5;
-  color: #444;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-h1 {
-  color: rgb(179, 131, 226);
-  font-size: 10rem;
-  text-align: center;
-  opacity: 0.4;
-}
-
-form {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
-  width: 400px;
-}
-
-.input {
-  border: none;
-  color: #444;
-  font-size: 2rem;
-  padding: 1rem 2rem;
-  display: block;
-  width: 100%;
-}
-
-.input:focus {
-  outline-color: rgb(179, 131, 226);
-}
-
-.input::placeholder {
-  color: #d5d5d5;
-}
-
-.todos {
-  background-color: #fff;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.todos li {
-  border-top: 1px solid #e5e5e5;
-  cursor: pointer;
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-}
-
-.todos li.completed {
-  color: #b6b6b6;
-  text-decoration: line-through;
-}
-
-p {
-  color: #b5b5b5;
-  margin: 3rem 0;
-  text-align: center;
-  line-height: 20px;
-}
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2017/06/16/1092451/2d480e3a729968744705c5b9b89b386b-700.jpg');
+    background-size: cover;
+  }
+  
+  .container {
+    box-shadow: 10px 10px 30px 2px rgba(43, 41, 41, 0.329);
+    height: 90%;
+    width: 30%;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  
+  .image {
+    height: 35%;
+    background: center / cover url('https://wallpapercave.com/wp/CdBbiZ7.jpg');
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .list {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 8px 15px;
+    margin-top: 5px;
+    overflow: auto;
+  }
+  
+  .add-todo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 8px 8px 8px;
+  }
+  
+  .add-todo input {
+    width: 85%;
+    border: 2px solid rgba(148, 142, 142, 0.63);
+    justify-self: flex-start;
+    border-radius: 5px;
+    padding: 8px;
+  
+    font-size: 15px;
+  }
+  
+  ::placeholder {
+    color: rgba(148, 144, 144, 0.514);
+  }
+  
+  .add-todo input:focus {
+    outline-color: rgba(8, 247, 20, 0.973);
+  }
+  li {
+    border: 2px solid rgba(236, 233, 233, 0.808);
+    padding: 0 8px;
+    padding-right: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 12%;
+    border-radius: 8px;
+  }
+  .task {
+    margin-left: 8px;
+  }
+  .trash {
+    margin-left: auto;
+  }
+  .trash:hover {
+    color: rgb(199, 6, 6);
+  }
+  .line-through {
+    color: rgb(197, 193, 193);
+    text-decoration: line-through;
+  }
+  
+  .fa-circle,
+  .fa-check-circle,
+  .trash {
+    color: rgb(83, 199, 245);
+  }
+  .pointed {
+    cursor: pointer;
+  }

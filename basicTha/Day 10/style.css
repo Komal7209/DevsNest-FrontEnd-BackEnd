@@ -53,15 +53,18 @@
     transform: rotateY(180deg);
   }
   
+  /* that flip class */
   .card.flip {
     transform: rotateY(180deg);
   }
   
-  .card.hide {
+  /* that hide class */
+  .card.hide {                     
     transform: rotateY(360deg);
     opacity: 0;
   }
   
+  /* that reset class */
   .card.reset {
     transform: rotateY(360deg);
   }
