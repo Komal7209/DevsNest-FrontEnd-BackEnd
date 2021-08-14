@@ -5,6 +5,7 @@ const resetBtn = document.querySelector(".btn");
 let cardsSelected = [];
 let cardsId = [];
 let cardsWon = [];
+let counter = 0;
 
 function flipCard() {
   this.classList.add("flip");
@@ -26,18 +27,27 @@ function checkForMatch() {
 
   if (cardsId[0] === cardsId[1]) {
     // console.log("clicked same img");
+    counter+= 10;
     cardsId.pop();
     cardsSelected.pop();
   } else if (cardsSelected[0] === cardsSelected[1]) {
     // console.log("Matched");
+    counter-=2;
     firstCard.classList.add("hide");
     secondCard.classList.add("hide");
 
     cardsWon.push(cardsSelected);
     if (cardsWon.length === cards.length / 2) {
+      if (counter>0){
+        container.innerHTML = `
+         <h1>You Won!! with scores: ${counter}</h1>
+         `;
+      }
+      else{
       container.innerHTML = `
-        <h1>You Won!!</h1>
+      <h1>You lose!! with scores: ${counter}</h1>
       `;
+      }
       resetBtn.innerHTML = "Play Again?";
       container.classList.add("won");
     }
