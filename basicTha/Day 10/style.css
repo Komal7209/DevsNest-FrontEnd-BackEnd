@@ -20,6 +20,16 @@
     grid-template-columns: repeat(4, 1fr);
     perspective: 1000px;
   }
+  .card {
+    position: relative;
+    transform-style: preserve-3d;
+    /* transform: skewX(-10deg); */
+    /* transition: transform 0.5s; */
+  }
+  
+  .card:hover {
+    transform: scale(1.1) skewX(-7deg);
+  }
   
   .card {
     width: 150px;
@@ -30,8 +40,8 @@
     transform-style: preserve-3d;
     transition: transform 0.4s, opacity 0.4s ease-in;
     cursor: pointer;
-  }
-  
+  } 
+
   .front-face,
   .back-face {
     width: 100%;
