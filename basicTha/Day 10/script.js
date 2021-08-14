@@ -32,7 +32,7 @@ function checkForMatch() {
     cardsSelected.pop();
   } else if (cardsSelected[0] === cardsSelected[1]) {
     // console.log("Matched");
-    counter-=2;
+    // counter-=2;
     firstCard.classList.add("hide");
     secondCard.classList.add("hide");
 
@@ -45,7 +45,7 @@ function checkForMatch() {
       }
       else{
       container.innerHTML = `
-      <h1>You lose!! with scores: ${counter}</h1>
+      <h1>You lose :( with scores: ${counter}</h1>
       `;
       }
       resetBtn.innerHTML = "Play Again?";
@@ -53,11 +53,12 @@ function checkForMatch() {
     }
   } else {
     removeFlip(firstCard, secondCard);
+    counter-=1;
   }
 
   cardsSelected = [];
   cardsId = [];
-}
+} 
 
 function removeFlip(card1, card2) {
   card1.classList.remove("flip");
