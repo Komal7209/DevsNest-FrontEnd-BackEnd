@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #55423d;
+    color: #fff3ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  h2 {
+    color: #fff3ec;
+  }
+  
+  .container {
+    height: 500px;
+    width: 500px;
+    border: 1px solid #ffc0ad;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  img {
+    width: 100px;
+    height: 100px;
+  }
