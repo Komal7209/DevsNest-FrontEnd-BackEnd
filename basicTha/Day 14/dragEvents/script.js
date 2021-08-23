@@ -1,32 +1,32 @@
-const ball = document.querySelector(".ball");
+const coin = document.querySelector(".coin");
 
-ball.onmousedown = function (event) {
+coin.onmousedown = function (event) {
   // (1) prepare to moving: make absolute and on top by z-index
-  ball.style.position = "absolute";
+  coin.style.position = "absolute";
 
-  // centers the ball at (pageX, pageY) coordinates
+  // centers the coin at (pageX, pageY) coordinates
   function moveAt(pageX, pageY) {
-    ball.style.left = pageX - ball.offsetWidth / 2 + "px";
-    ball.style.top = pageY - ball.offsetHeight / 2 + "px";
+    coin.style.left = pageX - coin.offsetWidth / 2 + "px";
+    coin.style.top = pageY - coin.offsetHeight / 2 + "px";
   }
 
-  // move our absolutely positioned ball under the pointer
+  // move our absolutely positioned coin under the pointer
   moveAt(event.pageX, event.pageY);
 
   function onMouseMove(event) {
     moveAt(event.pageX, event.pageY);
   }
 
-  // (2) move the ball on mousemove
+  // (2) move the coin on mousemove
   document.addEventListener("mousemove", onMouseMove);
 
-  // (3) drop the ball, remove unneeded handlers
-  ball.onmouseup = function () {
+  // (3) drop the coin, remove unneeded handlers
+  coin.onmouseup = function () {
     document.removeEventListener("mousemove", onMouseMove);
-    ball.onmouseup = null;
+    coin.onmouseup = null;
   };
 
-  ball.ondragstart = function () {
+  coin.ondragstart = function () {
     return false;
   };
 };
