@@ -3,13 +3,14 @@
   }
   
   body {
-    background-color: #55423d;
+    background-color: #eec0b4;
     color: #fff3ec;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     flex-direction: column;
+    text-align: center;
   }
   
   h2 {
@@ -19,9 +20,10 @@
   .container {
     height: 500px;
     width: 500px;
-    border: 1px solid #ffc0ad;
+    border: 4px solid #ffc0ad;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    text-align: center;
   }
   
   img {
