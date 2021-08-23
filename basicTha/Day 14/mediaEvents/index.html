@@ -10,9 +10,17 @@
   <body>
     <div class="container">
       <h3>Press Arrow keys to move forward or backwards and space to pause</h3>
-      <video id="video" width="400" height="160" controls>
+      <!-- <div class="video"> -->
+        <!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/b_cBzl64cpo?controls=0 I?&autoplay=1" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> -->
+        <!-- <iframe width="560" height="315" src="https://drive.google.com/file/d/1Pc8regORJtTxb3Xcv_NZhdtY01VqkYMg/preview " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> -->
+        
+        <video id="video" controls loop muted autoplay playsinline  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+            <source src="../images/License Plate Detection Animation.mp4" type="video/mp4">
+        </video>
+    <!-- </div> -->
+      <!-- <video id="video" width="400" height="160" controls>
         <source src="../images/License Plate Detection Animation.mp4" type="video/mp4" /> 
-      </video>
+      </video> -->
     </div>
     <script src="./script.js"></script>
   </body>
