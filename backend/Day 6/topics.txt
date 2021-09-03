@@ -30,7 +30,7 @@ Call Stack, An Event loop , A callback queue , some other apis , and stuff
 It have Call Stack And a Heap only
 
 
-// link for V8 compiler : 
+// link for V8 compiler : https://user-images.githubusercontent.com/33154959/132024987-a73b4c46-8951-4740-9efa-10e3eaf4fae8.jpeg
 
 Heap: where memory is getting alocated
 Stack: where executation is happening
