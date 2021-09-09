@@ -1,0 +1,179 @@
+cd drivename/foldername
+mkdir newFolderName
+
+// if we want to use npm packages like express then we need to create json file first so that or do npm init in that folder to create json file
+
+cd newFolderName
+npm init
+
+/// now package.json file has been created
+////////////version is in the form of a_.b_.c_ => a denotes major changes, b denotes minor feature additions, c denotes some bug fixes
+
+/// after abovce steps now we can install any npm package
+
+npm install --save express
+// --save saves in dependencies i.e dependencies required during whole project i.e prroduction level
+
+npm install --save-dev nodemon
+// --save-dev saves in devDependencies i.e depenencies required during development
+
+//nodemon helps in automatic update of code
+
+nodemon index.json  // it will watch index.js
+
+
+//////////////////////////////////
+
+index.js file
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+app.listen(5000);  // now it is listening on that port number
+
+//////////////////////////////////////////////////////////
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+//read
+
+app.get('/', (req, res)=>{
+    res.send("Hello");
+})
+
+
+app.listen(5000);  // now it is listening on that port number
+
+// here nodemon sees that 5000 port is called then after '/' it want to read something and display on website then it sees that in file only it is mentioned app.get('/'), there function is being mentioned which will be called
+////////////////////////////////////////
+
+we could also write above one as:
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+//read
+
+const slash = (req, res)=>{
+    res.send("Hello");
+};
+
+app.get('/', slash);
+
+app.listen(5000);  // now it is listening on that port number
+
+
+///////////////////////////////////////////
+
+for other CRUD operations:
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+//read
+
+const slash = (req, res)=>{
+    res.send("Hello");
+};
+
+app.get('/', slash);
+app.post('/',slash);
+app.put('/', slash);
+app.delete('/', slash);
+
+app.listen(5000);  // now it is listening on that port number
+
+/// Now at each operation hello function would be called but for checking that we could check on postman software
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// for sending status 
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+
+app.get('/', (req, res)=>{
+
+    res.sendStatus(201); // updated successfully
+    res.send();
+    //or use 
+    //res.json();
+
+    // res.send = return 
+    // res.send acts as return statement i.e after that no other line execute
+
+    //basically res is a function like below:
+   /*
+    res ={
+        sendStatus:() => null,
+        send: () => return 
+    }
+    */
+
+
+});
+
+app.listen(5000);  // now it is listening on that port number
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// pipelining: i.e one function after other
+
+const express = require('express');  
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+
+app.get('/', (req, res)=>{
+
+    res.status(500).send("database not connecting");
+
+});
+
+app.listen(5000);  // now it is listening on that port number
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+///related to urls params
+
+const express = require('express');  
+const app = express();
+
+//CRUD -> POST, GET , PUT , DELETE
+
+app.get('/', (req, res)=>{
+
+    res.status(500).send("database not connecting");
+
+});
+
+//
+// http://localhost:5000/products?limit=50&q=something
+
+// products?limit=50&q=something  -> query param
+
+// "limit":"50"   // this is status variable : limit, q
+// "q": "something"
+
+
+app.get('/products', (req,res)=>{
+    res.send(req.query);  // due to req.query whatsoever is written in query param is converted to object thus 158,159nwill be returned
+
+})
+
+app.listen(5000);  // now it is listening on that port number
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+52.28 - 58.23
+
+
+
+
+
