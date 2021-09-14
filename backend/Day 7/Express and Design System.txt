@@ -172,8 +172,59 @@ app.listen(5000);  // now it is listening on that port number
 ////////////////////////////////////////////////////////////////////////////////////
 
 52.28 - 58.23
+// some more variations as per path
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+
+app.get('/', (req, res)=>{
+    res.status(500).send("database not connecting");
+});
+
+
+app.get('/ab?cd', (req,res)=>{    //http://localhost:5000/acd
+    res.send('abcd');
+})    // when b is optional
+
+app.get('/ab+cd', (req,res)=>{    //http://localhost:5000/abbbbbbbbbbbbbbbbbbbbbbbbbbbbbcd
+    res.send('abcd');
+}) // when we want to write b any number of times
+
+app.get('/ab*cd', (req,res)=>{    //http://localhost:5000/abRANDOMcd
+    res.send('abcd');
+}) // when there could be anything after ab but it should have cd in the end then we need to put * in between
+
+app.get('/ab(cd)?e', (req,res)=>{    //http://localhost:5000/abcde
+    res.send('abcd');
+}) // when cd both are optional 
+
+app.get(/a/, (req,res)=>{    //http://localhost:5000/aaaaaaaaaaaaaaaabRANDOMcd
+    res.send('/a/');
+}) // when we want to use regex // here it is important that, that regex need to start form a
+
+app.get(/.*fly$/, (req,res)=>{    //http://localhost:5000/butterfly    or  //http://localhost:5000/dragonfly 
+    res.send('/.*fly$/');
+}) // when we want to use regex // here fly is at the end
+
+app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000/user/1/books/2
+    res.send(req.params);
+}) // when we want to have some fixed and some changable variables like here users word is fix but usersId is dynamic as per diff ids or users, for dynamic ones we use ':' before the varible in which we want that id
+  //  use query.param
+
+app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000/user/1/books/2
+    console.log(req.query); // for printing key value pair of url on console i.e this output would be shown on console of nodeJs
+    res.send(req.params);
+}) // when we want to have some fixed and some changable variables like here users word is fix but usersId is dynamic as per diff ids or users, for dynamic ones we use ':' before the varible in which we want that id
+  //  use query.param
+
+app.listen(5000);  // now it is listening on that port number
 
 
 
+
+// require express
+//called its function
+
+// crud methods
 
 
