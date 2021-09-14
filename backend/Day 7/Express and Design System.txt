@@ -9,7 +9,7 @@ npm init
 /// now package.json file has been created
 ////////////version is in the form of a_.b_.c_ => a denotes major changes, b denotes minor feature additions, c denotes some bug fixes
 
-/// after abovce steps now we can install any npm package
+/// after above steps now we can install any npm package
 
 npm install --save express
 // --save saves in dependencies i.e dependencies required during whole project i.e prroduction level
@@ -170,7 +170,44 @@ app.listen(5000);  // now it is listening on that port number
 
 
 ////////////////////////////////////////////////////////////////////////////////////
+encodeURIComponent is used only for values in url
 
+// when we have url in which '&' is involved in a value of paramter
+
+///Then we simply need to go to inspect element console of that webpage and in that we need to write 
+encodeURIComponent(something&something)
+///this will return some new words which we need to put in url so that it doesnt takes value of that particular key sepearately
+
+// http://localhost:5000/?q=something&something
+
+/// due to '&' 2 something would be treated as different keys and values
+
+// so when we do encodeURIComponent in console of browser it will return a speccific value
+
+///// http://localhost:5000/?q=something%26something
+
+///and now it wont be treated as separate key value pair
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const app = express();
+
+app.get('/', (req, res)=>{
+    res.json(req.query);
+});
+
+app.post('/', (req,res) =>{
+    res.json({text:req.body})
+})
+
+app.listen(5000);  // now it is listening on that port number
+
+
+
+
+till 6:23 day 8 video
+
+
+/////////////////////////////////////////////////////////////////////
 52.28 - 58.23
 // some more variations as per path
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
