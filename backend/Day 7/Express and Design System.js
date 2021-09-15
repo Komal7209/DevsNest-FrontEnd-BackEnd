@@ -192,6 +192,7 @@ const express = require('express');  // express passes function definition which
 const app = express();
 
 app.get('/', (req, res)=>{
+    res.status(200);   // here it will give value of status as well as below value
     res.json(req.query);
 });
 
