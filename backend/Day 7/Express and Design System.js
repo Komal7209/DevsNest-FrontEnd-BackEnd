@@ -205,11 +205,11 @@ app.listen(5000);  // now it is listening on that port number
 
 
 
-till 6:23 day 8 video
+//till 6:23 day 8 video
 
 
 /////////////////////////////////////////////////////////////////////
-52.28 - 58.23
+//52.28 - 58.23
 // some more variations as per path
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const app = express();
