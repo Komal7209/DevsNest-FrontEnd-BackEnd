@@ -1,4 +1,9 @@
- 
+// when we are using nodejs and postman:
+// what nodejs do is... in nodejs when we start with nodeman then it starts the server
+// when server is being started then we can directly write that port name in postman and test that api
+// this is how both are connected
+
+
 
 // here we have written two functions
 // here, next function(acts as main function) would be called after first function executes well, get executed
@@ -252,6 +257,47 @@ app.listen(5000);
 ///some points :from 36:40 to check till 36:47
 // get http verb  sends 200 but as browser caches the data thats why 304 is being shown on the page's network tab of inspect element, whenever we reload
 
-// issues with this thing:
+// issues with this thing: if we use get then it's call is cached thats hy we dont send password in calls of get
+// we send password in calls of post
 
+
+///////////// For Password ///////////////
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const { send } = require('process');
+const app = express();
+
+const checkAuth = (req, res, next)=>{
+    console.log("in first" , req.query);       // output will be on node console
+    if(req.query.auth === 'bdjedfrjnrktfrufce') {          // using === to stringify   // we get a url's query through.. req.query()
+    next();                                   // next function
+    }
+    else {
+        res.status(400).send("should be authorised");
+    }
+};
+
+app.use(checkAuth);  // whatsoever middleware would be put here it will run in all apis
+
+// all these below are routes
+
+const sendRes = (req, res)=>{
+    res.status(200);               
+    res.json(req.query);
+};
+
+app.get('/', sendRes);
+
+/// for sending password 
+// by default below code wont be accepted by node i.e it will return empty {} in potman and undefined in nodejs console
+// so we would be required to install body-parser in node
+/// npm install --save body-parser
+app.post('/', (req,res) =>{
+    console.log('req.body-> ', req.body);
+    res.json({text:req.body})
+})
+
+app.listen(5000);
+
+////////////////////////////////////////
 
