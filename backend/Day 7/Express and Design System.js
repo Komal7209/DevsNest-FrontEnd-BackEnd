@@ -49,7 +49,7 @@ app.listen(5000);  // now it is listening on that port number
 // here nodemon sees that 5000 port is called then after '/' it want to read something and display on website then it sees that in file only it is mentioned app.get('/'), there function is being mentioned which will be called
 ////////////////////////////////////////
 
-we could also write above one as:
+//we could also write above one as:
 
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const app = express();
@@ -68,7 +68,7 @@ app.listen(5000);  // now it is listening on that port number
 
 ///////////////////////////////////////////
 
-for other CRUD operations:
+//for other CRUD operations:
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const app = express();
 
@@ -219,35 +219,52 @@ app.get('/', (req, res)=>{
     res.status(500).send("database not connecting");
 });
 
-
+// this route path will match acd with abcd 
 app.get('/ab?cd', (req,res)=>{    //http://localhost:5000/acd
     res.send('abcd');
 })    // when b is optional
 
+//this route path will match abcd, abbbcd,.... with abcd
 app.get('/ab+cd', (req,res)=>{    //http://localhost:5000/abbbbbbbbbbbbbbbbbbbbbbbbbbbbbcd
     res.send('abcd');
 }) // when we want to write b any number of times
 
+// this route path will match abcd, abxcd, abRANDOMcd with abcd
 app.get('/ab*cd', (req,res)=>{    //http://localhost:5000/abRANDOMcd
     res.send('abcd');
 }) // when there could be anything after ab but it should have cd in the end then we need to put * in between
 
+//this route path will match /abe and /abcde
 app.get('/ab(cd)?e', (req,res)=>{    //http://localhost:5000/abcde
     res.send('abcd');
 }) // when cd both are optional 
 
+// this route path will match anything with an "a" in the word
 app.get(/a/, (req,res)=>{    //http://localhost:5000/aaaaaaaaaaaaaaaabRANDOMcd
     res.send('/a/');
 }) // when we want to use regex // here it is important that, that regex need to start form a
 
+
+//this route path will match butterfly and dragonfly
 app.get(/.*fly$/, (req,res)=>{    //http://localhost:5000/butterfly    or  //http://localhost:5000/dragonfly 
     res.send('/.*fly$/');
 }) // when we want to use regex // here fly is at the end
 
-app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000/user/1/books/2
+
+
+//To define routes with route parameter, simply specify
+/**
+ * Route path: /user/:usersId/books/:booksId
+ * Request URL: http://localhost:5000/users/34/books/8985  
+ * req.params :{"userId": "34", "bookId": "8985"}
+ */
+
+
+app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000/user/1/books/2   // route path
     res.send(req.params);
 }) // when we want to have some fixed and some changable variables like here users word is fix but usersId is dynamic as per diff ids or users, for dynamic ones we use ':' before the varible in which we want that id
   //  use query.param
+
 
 app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000/user/1/books/2
     console.log(req.query); // for printing key value pair of url on console i.e this output would be shown on console of nodeJs
@@ -255,7 +272,8 @@ app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000
 }) // when we want to have some fixed and some changable variables like here users word is fix but usersId is dynamic as per diff ids or users, for dynamic ones we use ':' before the varible in which we want that id
   //  use query.param
 
-app.listen(5000);  // now it is listening on that port number
+
+  app.listen(5000);  // now it is listening on that port number
 
 
 

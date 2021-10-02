@@ -127,15 +127,17 @@ app.get('/',checkAdmin , (req, res)=>{
     res.status(500).send("database not connecting");
 });
 
-
+// this route path will match acd with abcd 
 app.get('/ab?cd', checkAdmin,(req,res)=>{    //http://localhost:5000/acd
     res.send('abcd');
 })    // when b is optional
 
+//this route path will match abcd, abbbcd,.... with abcd
 app.get('/ab+cd', (req,res)=>{    //http://localhost:5000/abbbbbbbbbbbbbbbbbbbbbbbbbbbbbcd
     res.send('abcd');
 }) // when we want to write b any number of times
 
+// this route path will match abcd, abxcd, abRANDOMcd with abcd
 app.get('/ab*cd', (req,res)=>{    //http://localhost:5000/abRANDOMcd
     res.send('abcd');
 }) 
