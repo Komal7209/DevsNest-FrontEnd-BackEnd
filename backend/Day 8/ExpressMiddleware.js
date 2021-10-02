@@ -261,7 +261,7 @@ app.listen(5000);
 // we send password in calls of post
 
 
-///////////// For Password ///////////////
+// For Password ///////////////
 
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const { send } = require('process');
@@ -289,9 +289,12 @@ const sendRes = (req, res)=>{
 app.get('/', sendRes);
 
 /// for sending password 
-// by default below code wont be accepted by node i.e it will return empty {} in potman and undefined in nodejs console
+// by default below code wont be accepted by node i.e it will return empty {} in postman and undefined in nodejs console
 // so we would be required to install body-parser in node
-/// npm install --save body-parser
+
+//command for installing :
+// npm install --save body-parser
+
 app.post('/', (req,res) =>{
     console.log('req.body-> ', req.body);
     res.json({text:req.body})
@@ -301,3 +304,155 @@ app.listen(5000);
 
 ////////////////////////////////////////
 
+//using body parser for passwords:  // bodyParser is depreciated so below code might not work
+
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const bodyParser = require("body-parser") // this thing goes to each middleware so that it could handle each post's call 
+//const { send } = require('process');
+const app = express();
+
+const checkAuth = (req, res, next)=>{
+    if(req.query.auth === 'bdjedfrjnrktfrufce') {          // using === to stringify   // we get a url's query through.. req.query()
+    next();                                   // next function
+    }
+    else {
+        res.status(401).send("should be authorised");
+    }
+};
+
+app.use(bodyParser);  // whatsoever middleware would be put here it will run in all apis // we require body_parser so that what so ever data we are sending using forms we could get that
+
+
+// all these below are routes
+
+const sendRes = (req, res)=>{
+    res.status(200);               
+    res.json(req.query);
+};
+
+app.get('/', sendRes);
+
+app.post('/', (req,res) =>{
+    console.log('req.body-> ', req.body);
+    res.json({text:req.body})  // whatsoever data we are sending that we get in req.body, form's raw data is being find here but we require body-parser for viewing it
+})
+
+app.listen(5000);
+
+////////////////////////////////////////////////////////////
+
+
+//using body parser for passwords for form data:
+
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const bodyParser = require("body-parser") // this thing goes to each middleware so that it could handle each post's call 
+const app = express();
+
+const checkAuth = (req, res, next)=>{
+    if(req.query.auth === 'bdjedfrjnrktfrufce') {          // using === to stringify   // we get a url's query through.. req.query()
+    next();                                   // next function
+    }
+    else {
+        res.status(401).send("should be authorised");
+    }
+};
+
+app.use(bodyParser.urlencoded({ extended:true}));  // whatsoever middleware would be put here it will run in all apis // we require body_parser so that what so ever data we are sending using forms we could get that
+app.use(bodyParser.json());                        // for json data 
+
+// all these below are routes
+
+const sendRes = (req, res)=>{
+    res.status(200);               
+    res.json(req.query);
+};
+
+app.get('/', sendRes);
+
+app.post('/', (req,res) =>{
+    console.log('req.body-> ', req.body);
+    res.json({text:req.body})  // whatsoever data we are sending that we get in req.body, form's raw data is being find here but we require body-parser for viewing it
+})
+
+app.listen(5000);
+
+//////////////////////////////////////////////////////////////
+
+// when res.json and res.send both we need to do then it will throw error in the execution for sending data on node.js console
+
+const express = require('express');  
+const bodyParser = require("body-parser")
+const app = express();
+
+const checkAuth = (req, res, next)=>{
+    if(req.query.auth === 'bdjedfrjnrktfrufce') {  // using === to stringify   // we get a url's query through.. req.query()
+        console.log('1');
+        next();                                   // next function due to this it will goto resSend function
+    }
+    console.log('2');
+    res.status(401).send("should be authorised");  // here due to res.send and in next line res.json both will have conflict that ehich one need to be send
+};
+
+// all these below are routes
+
+const sendRes = (req, res)=>{            
+  //  res.json(req.query);                      // if uncomment this then it will show error  bcoz of confusions being created  and output wont be 1 inside 2
+    console.log('inside');
+};
+
+app.get('/', sendRes);
+
+app.post('/', (req,res) =>{
+    console.log('req.body-> ', req.body);
+    res.json({text:req.body}) 
+})
+
+app.listen(5000);
+
+
+////////////////////////////////////////////////////////////
+
+
+//as body parser is directly embedded in express so below code might work for passwords for form data:
+
+
+const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
+const bodyParser = require("body-parser") // this thing goes to each middleware so that it could handle each post's call 
+const app = express();
+
+const checkAuth = (req, res, next)=>{
+    if(req.query.auth === 'bdjedfrjnrktfrufce') {          // using === to stringify   // we get a url's query through.. req.query()
+    next();                                   // next function
+    }
+    else {
+        res.status(401).send("should be authorised");
+    }
+};
+
+app.use(express.urlencoded());  // whatsoever middleware would be put here it will run in all apis // we require body_parser so that what so ever data we are sending using forms we could get that
+app.use(express.json({ extended:true}));                        // for json data 
+
+// all these below are routes
+
+const sendRes = (req, res)=>{
+    res.status(200);               
+    res.json(req.query);
+};
+
+app.get('/', sendRes);
+
+app.post('/', (req,res) =>{
+    console.log('req.body-> ', req.body);
+    res.json({text:req.body})  // whatsoever data we are sending that we get in req.body, form's raw data is being find here but we require body-parser for viewing it
+})
+
+app.listen(5000);
+
+//////////////////////////////////////////////////////////////
+
+
+//THA:
+
+//http://expressjs.com/ : read till API Reference
