@@ -1,3 +1,8 @@
+/**
+ * * http://expressjs.com/en/guide/routing.html 
+ * All below examples are here
+ */
+
 // when we are using nodejs and postman:
 // what nodejs do is... in nodejs when we start with nodeman then it starts the server
 // when server is being started then we can directly write that port name in postman and test that api
@@ -10,7 +15,7 @@
 // this is how middlewares work, first test function is executed that everything is working fine and after that main function works (as here)with the help of next
 
 
-////// middleware is a function which executes just before actual function  //////
+// middleware is a function which executes just before actual function  //////
 
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const app = express();

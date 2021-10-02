@@ -1,30 +1,31 @@
-cd drivename/foldername
-mkdir newFolderName
+/**
+*cd drivename/foldername
+*mkdir newFolderName
 
 // if we want to use npm packages like express then we need to create json file first so that or do npm init in that folder to create json file
 
-cd newFolderName
-npm init
+*cd newFolderName
+*npm init
 
 /// now package.json file has been created
 ////////////version is in the form of a_.b_.c_ => a denotes major changes, b denotes minor feature additions, c denotes some bug fixes
 
 /// after above steps now we can install any npm package
 
-npm install --save express
+*npm install --save express
 // --save saves in dependencies i.e dependencies required during whole project i.e prroduction level
 
-npm install --save-dev nodemon
+*npm install --save-dev nodemon
 // --save-dev saves in devDependencies i.e depenencies required during development
 
 //nodemon helps in automatic update of code
 
-nodemon index.json  // it will watch index.js
+*nodemon index.json  // it will watch index.js
 
-
+*/
 //////////////////////////////////
 
-index.js file
+//index.js file
 
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
 const app = express();
@@ -170,12 +171,14 @@ app.listen(5000);  // now it is listening on that port number
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-encodeURIComponent is used only for values in url
+/**
+*encodeURIComponent is used only for values in url
 
 // when we have url in which '&' is involved in a value of paramter
 
 ///Then we simply need to go to inspect element console of that webpage and in that we need to write 
-encodeURIComponent(something&something)
+
+*encodeURIComponent(something&something)
 ///this will return some new words which we need to put in url so that it doesnt takes value of that particular key sepearately
 
 // http://localhost:5000/?q=something&something
@@ -184,8 +187,8 @@ encodeURIComponent(something&something)
 
 // so when we do encodeURIComponent in console of browser it will return a speccific value
 
-///// http://localhost:5000/?q=something%26something
-
+///http://localhost:5000/?q=something%26something
+*/
 ///and now it wont be treated as separate key value pair
 
 const express = require('express');  // express passes function definition which need to be passed in app i.e app will call express 
@@ -284,3 +287,7 @@ app.get('/user/:usersId/books/:booksId', (req,res)=>{    //http://localhost:5000
 // crud methods
 
 
+/**
+ * http://expressjs.com/en/starter/basic-routing.html
+ * Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+*/
